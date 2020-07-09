@@ -58,7 +58,7 @@ const validators = {
 	resources,
 
 	required(value, field, model, messages = resources) {
-		return checkEmpty(value, field.required, messages);
+		return checkEmpty(value, typeof field.required === 'function' ? field.required() : field.required, messages);
 	},
 
 	number(value, field, model, messages = resources) {
